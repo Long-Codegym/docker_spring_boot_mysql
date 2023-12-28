@@ -27,7 +27,7 @@ public class MessageController {
 
     @GetMapping("/allBySenderAndReceiver/{receiverId}")
     public ResponseEntity<List<Message>> getAllBySenderAndReceiver(@PathVariable Long receiverId) {
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); // lấy từ token gửi lên
         Account account = iAccountService.findByUsername(userDetails.getUsername()).orElseGet(null);
         return new ResponseEntity<>(iMessageService.getAllBySenderAndReceiver(account.getId(), receiverId), HttpStatus.OK);
     }

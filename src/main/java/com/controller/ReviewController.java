@@ -23,8 +23,8 @@ public class ReviewController {
     }
 
     @GetMapping("/isAbleToReview")
-    ResponseEntity<Boolean> isAbleToReview(@RequestParam long ccdvId, @RequestParam long userId) {
-        return new ResponseEntity<>(iReviewService.isAbleToReview(ccdvId, userId), HttpStatus.OK);
+    ResponseEntity<Boolean> isAbleToReview(@RequestParam long tourID, @RequestParam long userId) {
+        return new ResponseEntity<>(iReviewService.isAbleToReview(tourID, userId), HttpStatus.OK);
     }
 
     @PostMapping("/sendReview")
